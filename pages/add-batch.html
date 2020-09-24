@@ -1,0 +1,22 @@
+<psk-page title="Add batch">
+    <psk-form controller-name="addBatchController">
+        <psk-form-row>
+            <psk-text-input label="Batch number" value="@batchNumber" read-only></psk-text-input>
+        </psk-form-row>
+        <psk-form-row>
+            <psk-text-input label="Product ID" placeholder="Insert product type DSU KeySSI" value="@productID" required></psk-text-input>
+        </psk-form-row>
+        <psk-form-row>
+            <psk-text-input label="Leaflet" placeholder="Insert approved leaflet DSU KeySSI" value="@leaflet" required></psk-text-input>
+        </psk-form-row>
+        <psk-form-row>
+            <psk-select view-model="@countries" value="@country" required></psk-select>
+        </psk-form-row>
+        <psk-form-row>
+            <psk-date-input data-format="DD MM YYYY" label="Expiration date" value="@expiration" ></psk-date-input>
+        </psk-form-row>
+        <psk-form-row>
+            <psk-button label="Add batch" event-name="add-batch"></psk-button>
+        </psk-form-row>
+    </psk-form>
+</psk-page>

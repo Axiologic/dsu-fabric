@@ -1,0 +1,27 @@
+{
+  "defaultMenuConfig": {
+    "pagePrefix": "?",
+    "historyType": "query",
+    "icon": "fa-bars",
+    "type": "route",
+    "component": "psk-page-loader",
+    "exact": true,
+    "404": "pages/404.html"
+  },
+  "pages": [
+    {
+      "name": "Batches"
+    },
+    {
+      "name": "Packages"
+    },
+    {
+      "name": "Add batch",
+      "indexed": false
+    },
+    {
+      "name": "Create package",
+      "indexed": false
+    }
+  ]
+}
