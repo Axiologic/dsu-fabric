@@ -2,7 +2,7 @@ import Utils from "./Utils.js";
 export default class Batch {
     batchNumber;
     expiration;
-    leaflet;
+    product;
     country;
 
     constructor(batch) {
@@ -30,8 +30,8 @@ export default class Batch {
             errors.push('Expiration date is required.');
         }
 
-        if (!this.leaflet) {
-            errors.push('Leaflet is required.');
+        if (!this.product) {
+            errors.push('Product is required.');
         }
 
         if (!this.country) {

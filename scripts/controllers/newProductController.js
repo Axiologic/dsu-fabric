@@ -5,10 +5,10 @@ import storage from '../services/Storage.js';
 import DSU_Builder from '../services/DSU_Builder.js';
 
 const dsuBuilder = new DSU_Builder();
-const PRODUCT_STORAGE_FILE = "product.json";
-const PRODUCT_IMAGE_FILE = "image.png";
-const LEAFLET_ATTACHMENT_FILE = "leaflet.pdf";
-const DOMAIN_NAME = "default";
+const PRODUCT_STORAGE_FILE = constants.PRODUCTS_STORAGE_PATH;
+const PRODUCT_IMAGE_FILE = constants.PRODUCT_IMAGE_FILE;
+const LEAFLET_ATTACHMENT_FILE = constants.LEAFLET_ATTACHMENT_FILE;
+const DOMAIN_NAME = constants.DOMAIN_NAME;
 
 export default class newProductController extends ContainerController {
     constructor(element, history) {
@@ -53,9 +53,9 @@ export default class newProductController extends ContainerController {
             }
             this.buildProductDSU (product, (err, keySSI) =>{
                 if (err) {
-                    return this.showError(err, "Product photo upload failed.");
+                    return this.showError(err, "Product DSU build failed.");
                 }
-                product.keySSI = keySSI
+                product.keySSI = keySSI;
                 this.persistProduct(product, (err) => {
                     if (err) {
                         this.showError(err, "Product keySSI failed to be stored.");
