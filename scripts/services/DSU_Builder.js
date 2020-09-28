@@ -3,7 +3,7 @@ function getBaseURL() {
     const host = window.location.hostname;
     const port = window.location.port;
 
-    return `${protocol}//${host}:${port}/dossierWizard`;
+    return `${protocol}//${host}:${port}/dsuWizard`;
 }
 
 function setEndpoint(transactionId, callback) {
@@ -19,10 +19,10 @@ function doPost(url, data, options, callback) {
         options = {};
     }
 
-    if (typeof data === "object") {
+/*    if (typeof data === "object") {
         options = data;
         data = undefined;
-    }
+    }*/
 
     if (typeof data === "function") {
         callback = data;
@@ -49,12 +49,17 @@ function doPost(url, data, options, callback) {
     });
 }
 
-export default class DossierBuilder {
+export default class DSU_Builder {
     constructor() {
     }
 
     getTransactionId(callback) {
         doPost("/begin", callback)
+    }
+
+    setDLDomain(transactionId, dlDomain, callback) {
+        const url = `/setDLDomain/${transactionId}`;
+        doPost(url, dlDomain, callback);
     }
 
     setSeedKey(transactionId, seedKey, callback) {
@@ -80,13 +85,15 @@ export default class DossierBuilder {
     }
 
     buildDossier(transactionId, callback) {
-        setEndpoint(transactionId, (err) => {
+        /*setEndpoint(transactionId, (err) => {
             if (err) {
                 return callback(err);
             }
 
             const url = `/build/${transactionId}`;
             doPost(url, callback);
-        });
+        });*/
+        const url = `/build/${transactionId}`;
+        doPost(url, "", callback);
     }
 }

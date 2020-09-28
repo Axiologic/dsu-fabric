@@ -1,6 +1,6 @@
 import ContainerController from '../../cardinal/controllers/base-controllers/ContainerController.js';
 import Package from '../models/Package.js';
-import DossierBuilder from "../services/DossierBuilder.js";
+import DSU_Builder from "../services/DSU_Builder.js";
 import Batch from "../models/Batch.js";
 import Countries from "../models/Countries.js";
 
@@ -58,7 +58,7 @@ export default class createPackageController extends ContainerController {
     buildPackageDSU(description, callback) {
         const DESCRIPTION_FILE_NAME = "description.json";
         const LEAFLET_MOUNT_PATH = "/leaflet";
-        const dossierBuilder = new DossierBuilder();
+        const dossierBuilder = new DSU_Builder();
         dossierBuilder.getTransactionId((err, transactionId) => {
             if (err) {
                 return callback(err);
