@@ -17,7 +17,7 @@ export default class createPackageController extends ContainerController {
 
         storage.getItem(constants.BATCHES_STORAGE_PATH, "json", (err, batches) => {
             if(err){
-                return console.log("errrrr", err);
+                return console.log("Error", err);
             }
 
             if(batches === null || typeof batches === "undefined"){
@@ -74,22 +74,15 @@ export default class createPackageController extends ContainerController {
                     return;
                 }
                 console.log("Package was created.", gtinSSI);
+                pack.keySSI = gtinSSI;
+                pack.serialNumber = this.model.package.serialNumber;
+                this.persistPack(pack, (err) => {
+                    if(err){
+                        this.showError(err, "Persist Package failed.");
+                    }
+                    history.push("?packages");
+                });
             });
-           /* let product = this.model;
-            this.buildPackageDSU(product, (err, seed) => {
-                this.showError(err);
-                let packageHistory = localStorage.getItem("packageHistory");
-                if (!packageHistory) {
-                    packageHistory = [];
-                } else {
-                    packageHistory = JSON.parse(packageHistory);
-                }
-
-                packageHistory.unshift(seed);
-                localStorage.setItem("packageHistory", JSON.stringify(packageHistory));
-                history.push("?packages");
-            });*/
-
         });
     }
 
@@ -112,6 +105,22 @@ export default class createPackageController extends ContainerController {
                     });
                 });
             });
+        });
+    }
+
+    persistPack(pack, callback){
+        storage.getItem(constants.PACKAGES_STORAGE_PATH, 'json', (err, packs) => {
+            if (err) {
+                //todo: improve error handling here
+               return callback(err);
+            }
+
+            if (typeof packs === "undefined" || packs === null) {
+                packs = [];
+            }
+
+            packs.push(pack);
+            storage.setItem(constants.PACKAGES_STORAGE_PATH, JSON.stringify(packs), callback);
         });
     }
 

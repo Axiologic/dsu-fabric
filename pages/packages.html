@@ -1,8 +1,10 @@
 <psk-page title="Packages">
     <psk-form controller-name="packagesController">
-        <psk-for-each data-view-model="@seeds">
-            <psk-form-row class="withSeparator">
-                <psk-label label="@seed"></psk-label>
+        <psk-for-each data-view-model="@packs">
+            <psk-form-row columns="2" layout="xs=[12,12] s=[12,12] m=[2,6] l=[2,6] xl=[2,6]"
+                          class="withSeparator">
+                <psk-barcode-generator type="gs1datamatrix" size="16" data="@code"></psk-barcode-generator>
+                <psk-label label="@code" readonly></psk-label>
             </psk-form-row>
             <div slot="no-data">No Packages.</div>
         </psk-for-each>

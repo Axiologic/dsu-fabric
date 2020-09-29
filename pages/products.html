@@ -1,20 +1,12 @@
 <psk-page title="Products">
     <psk-form controller-name="ProductsController">
-        <psk-form-row columns="2" layout="xs=[3,9] s=[4,8] m=[2,10] xl=[2,10]">
-            <b><psk-label label="Product name"></psk-label></b>
-            <b><psk-label label="KeySSI"></psk-label></b>
-        </psk-form-row>
         <psk-condition condition="@productsListLoaded">
             <psk-for-each slot="condition-true" data-view-model="products">
-                <psk-form-row columns="2" layout="xs=[3,9] s=[4,8] m=[2,10] xl=[2,10]">
-                    <div>
-                        <!--onclick="this.dispatchEvent(new Event('edit-product'))"-->
-                        <b><psk-label label="@name"></psk-label></b>
-                        <psk-label label="@serialNumber"></psk-label>
-                    </div>
-                    <div>
-                        <psk-label label="@keySSI"></psk-label>
-                    </div>
+                <psk-form-row columns="4" layout="xs=[2,1,2,7] s=[2,1,2,7] m=[2,1,2,7] l=[2,1,2,7] xl=[2,1,2,7]" class="withSeparator">
+                    <psk-label label="Product name"></psk-label>
+                    <b><psk-label label="@name"></psk-label></b>
+                    <psk-label label="KeySSI"></psk-label>
+                    <psk-text-input value="@keySSI" read-only></psk-text-input>
                 </psk-form-row>
                 <div slot="no-data">No Products.</div>
             </psk-for-each>
