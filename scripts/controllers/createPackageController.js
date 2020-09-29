@@ -73,6 +73,7 @@ export default class createPackageController extends ContainerController {
                     this.showError(err, "PackageDSU build failed.");
                     return;
                 }
+                console.log("Package was created.", gtinSSI);
             });
            /* let product = this.model;
             this.buildPackageDSU(product, (err, seed) => {
