@@ -5,7 +5,7 @@ import storage from '../services/Storage.js';
 import DSU_Builder from '../services/DSU_Builder.js';
 
 const dsuBuilder = new DSU_Builder();
-const PRODUCT_STORAGE_FILE = constants.PRODUCTS_STORAGE_PATH;
+const PRODUCT_STORAGE_FILE = constants.PRODUCT_STORAGE_FILE;
 const PRODUCT_IMAGE_FILE = constants.PRODUCT_IMAGE_FILE;
 const LEAFLET_ATTACHMENT_FILE = constants.LEAFLET_ATTACHMENT_FILE;
 const DOMAIN_NAME = constants.DOMAIN_NAME;
