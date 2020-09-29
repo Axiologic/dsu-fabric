@@ -77,16 +77,16 @@ export default class newProductController extends ContainerController {
                 if (err) {
                     return callback(err);
                 }
+                product.photo = PRODUCT_IMAGE_FILE;
+                product.leaflet = LEAFLET_ATTACHMENT_FILE;
                 dsuBuilder.addFileDataToDossier(transactionId, PRODUCT_STORAGE_FILE, JSON.stringify(product), (err) => {
                     if (err) {
                         return callback(err);
                     }
-                    product.photo = PRODUCT_IMAGE_FILE;
                     dsuBuilder.addFileDataToDossier(transactionId, PRODUCT_IMAGE_FILE, this.productPhoto, (err) => {
                         if (err) {
                             return callback(err);
                         }
-                        product.leaflet = LEAFLET_ATTACHMENT_FILE;
                         dsuBuilder.addFileDataToDossier(transactionId, LEAFLET_ATTACHMENT_FILE, this.leafletFile, (err) => {
                             if (err) {
                                 return callback(err);
