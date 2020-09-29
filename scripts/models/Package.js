@@ -10,7 +10,7 @@ export default class Package {
                 this[prop] = product[prop];
             }
         }
-        this.serialNumber = Utils.generateID(32);
+        this.serialNumber = Utils.generateNumericID(12);
     }
 
     validate() {

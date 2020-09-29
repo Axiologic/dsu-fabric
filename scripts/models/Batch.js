@@ -12,7 +12,7 @@ export default class Batch {
             }
         }
         if (!this.batchNumber) {
-            this.batchNumber = Utils.generateSerialNumber();
+            this.batchNumber = Utils.generateSerialNumber(6);
         }
     }
 

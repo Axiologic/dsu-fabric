@@ -1,5 +1,5 @@
 import utils from "./utils.js";
-const doPost = utils.getPostHandlerFor("dsuWizard");
+const doPost = utils.getPostHandlerFor("gtin-wizard");
 
 export default class DSU_Builder {
     constructor() {
@@ -14,10 +14,10 @@ export default class DSU_Builder {
         doPost(url, dlDomain, callback);
     }
 
-    setSeedKey(transactionId, seedKey, callback) {
-        const url = `/setSeedKey/${transactionId}`;
-        doPost(url, seedKey, callback);
-
+    setGtinSSI(transactionId, dlDomain, gtin, batch, expiration, callback){
+        const body = {dlDomain, gtin, batch, expiration}
+        const url = `/gtin/${transactionId}`;
+        doPost(url, JSON.stringify(body), callback);
     }
 
     addFileDataToDossier(transactionId, fileName, fileData, callback) {
