@@ -96,7 +96,10 @@ export default class createPackageController extends ContainerController {
                     return callback(err);
                 }
                 gtin_dsu_builder.addFileDataToDossier(transactionId, "package", JSON.stringify(pack), (err)=>{
-                    gtin_dsu_builder.mount(transactionId, "/", pack.product, (err)=>{
+                    if (err) {
+                        return callback(err);
+                    }
+                    gtin_dsu_builder.mount(transactionId, "/batch", pack.product, (err)=>{
                         if(err){
                             return callback(err);
                         }
