@@ -27,7 +27,7 @@ export default class DSU_Builder {
 
     mount(transactionId, path, seed, callback){
         const url = `/mount/${transactionId}`;
-        doPost(url, {
+        doPost(url, "",{
             headers: {
                 'x-mount-path': path,
                 'x-mounted-dossier-seed': seed

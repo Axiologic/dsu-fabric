@@ -22,12 +22,23 @@ export default class DSU_Builder {
 
     addFileDataToDossier(transactionId, fileName, fileData, callback) {
         const url = `/addFile/${transactionId}`;
-        doPost(url, fileData, {headers: {"x-dossier-path": fileName}}, callback);
+        const formData = new FormData();
+        let inputType = "file";
+
+        if (Array.isArray(fileData)) {
+            for (const attachment of fileData) {
+                inputType = "files[]";
+                formData.append(inputType, attachment);
+            }
+        } else {
+            formData.append(inputType, fileData);
+        }
+        doPost(url, formData, {headers: {"x-dossier-path": fileName}}, callback);
     }
 
     mount(transactionId, path, seed, callback){
         const url = `/mount/${transactionId}`;
-        doPost(url, {
+        doPost(url, "", {
             headers: {
                 'x-mount-path': path,
                 'x-mounted-dossier-seed': seed
